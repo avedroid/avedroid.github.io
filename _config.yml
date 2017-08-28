@@ -1,0 +1,10 @@
+# Site settings
+title: AVEDroid
+tag_text: AVEDroid
+description: A publishment of the artefacts of our study on Android vulnerability evolustion.
+
+# Build settings
+markdown: kramdown
+exclude: ["README.md"]
+sass:
+  style: compressed
