@@ -54,7 +54,7 @@ First line is the App ID (App name) and followings are the sorted versions of th
 
 ### Resource Sharing
 
-The lineage list will be shared after the decision of the paper related has been made.
+The lineage list will be shared after the decision of relevant paper has been made.
 
 ## Scanning and Raw Result
 
@@ -81,4 +81,4 @@ Because FlowDroid and IC3 are heavy in terms of resource consumption. Also, some
   * Scanned total # of APKs: 458,814
 
 ### Raw Scanning Result
-The scanning result will be shared after the decision of the paper related has been made.
+The scanning result will be shared after the decision of relevant paper has been made.
