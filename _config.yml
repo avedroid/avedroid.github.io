@@ -6,5 +6,6 @@ description: A publishment of the artefacts of our study on Android vulnerabilit
 # Build settings
 markdown: kramdown
 exclude: ["README.md"]
+highlighter: rouge
 sass:
   style: compressed
