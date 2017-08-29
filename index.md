@@ -88,4 +88,61 @@ Because FlowDroid and IC3 are heavy in terms of resource consumption. Also, some
 ### Raw Scanning Result
 The scanning result will be shared after the decision of relevant paper has been made.
 
-## Vulnerability Code Snippet
+## Vulnerable Code Snippet
+Based on the scanning result, we localized the vulnerabilities in the code and hereafter we are going to first give some example code snippets and second we are going to share all the vulnerable code with the community. Jimple code are used in the snippets which is the default intermediate representation of [Soot](https://sable.github.io/soot/).
+
+* Insecure connection without SSL which could be subject to man-in-the-middle (MITM) attack. In line 3 we can see an URL without HTTPS.
+
+{% highlight Java linenos %}
+private void c(Activity, Bundle, IUiListener) {
+    $r6 = new java.lang.StringBuffer;
+    specialinvoke $r6.<init>( "http://openmobile.qq.com/api/check?page=shareindex.html& style=9");
+    $r10 = virtualinvoke $r6.toString();
+    $z0 = staticinvoke Util.openBrowser($r1, $r10);
+}
+{% endhighlight %}
+
+* None Certificate Verification. In line 9 issuers are not really checked.
+
+{% highlight Java linenos %}
+class cn.domob.android.ads.r {
+  public void <init>(android.content.Context) {
+    $r3 = new cn.domob.android.ads.r$b;
+}}
+
+class r$b implements X509TrustManager {
+  public void checkClientTrusted(X509Certificate[],String) {}
+  public void checkServerTrusted(X509Certificate[],String) {}
+  public X509Certificate[] getAcceptedIssuers() {return null;}
+}
+{% endhighlight %}
+
+* Base64 encoding while the encoded string can be easily revealed since it is not a encryption. In line 3, the encoded string can be easily decoded.
+
+{% highlight Java linenos %}
+public static byte[] b(byte[]) {
+  byte[] $r0, $r1;
+  $r1 = staticinvoke <android.util.Base64: byte[] decode(java.lang.String,int)> ("MDNhOTc2NTExZTJjYmUzYTdmMjY4MDhmYjdhZjNjMDU=", 0);
+  $r0 = staticinvoke <com.tencent.wxop.stat.b.g: byte[] a(byte[],byte[])>($r0, $r1);
+  return $r0;
+}
+{% endhighlight %}
+
+* Command injection which arbitrary shell command can be executed at runtime. From line 2 to 8, a string of command is made and executed in the last 2 lines.
+
+{% highlight Java linenos %}
+private static void checkSpace(android.content.Context){
+  $r2 = new java.lang.StringBuilder;
+  specialinvoke $r2.<java.lang.StringBuilder: void <init>()>();
+  $r2 = virtualinvoke $r2.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("Insufficient Space For SecApk available size:");
+  $r2 = virtualinvoke $r2.<java.lang.StringBuilder: java.lang.StringBuilder append(long)>($l0);
+  $r2 = virtualinvoke $r2.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(" classSize");
+  $r2 = virtualinvoke $r2.<java.lang.StringBuilder: java.lang.StringBuilder append(long)>($l1);
+  $r3 = virtualinvoke $r2.<java.lang.StringBuilder: java.lang.String toString()>();
+  $r4 = staticinvoke <java.lang.Runtime: java.lang.Runtime getRuntime()>();
+  virtualinvoke $r4.<java.lang.Runtime: java.lang.Process exec(java.lang.String)>($r3);
+}
+{% endhighlight %}
+
+### Code Sharing
+The scanning result will be shared after the decision of relevant paper has been made.
