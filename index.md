@@ -71,14 +71,17 @@ Because FlowDroid and IC3 are heavy in terms of resource consumption. Also, some
 * FlowDroid
   * Scanned # of completed lineages: 37,736 apks of 3357 lineages
   * Scanned total # of APKs: 223,474
+  * Scan list: download [here]({{site.url}}/resources/flow_scan_list)
 
 * IC3
   * Scanned # of completed lineages: 30,042 apks of 2048 lineages
   * Scanned total # of APKs: 72,983
+  * Scan list: download [here]({{site.url}}/resources/ic3_scan_list)
 
 * AndroBugs
   * Scanned # of completed lineages: 454,799 apks of 27,974 lineages
   * Scanned total # of APKs: 458,814
+  * Scan list: download [here]({{site.url}}/resources/bugs_scan_list)
 
 ### Raw Scanning Result
 The scanning result will be shared after the decision of relevant paper has been made.
