@@ -6,7 +6,7 @@ layout: default
 
 ## Abstract
 
-The Android ecosystem today is a growing universe of a few billions devices, hundreds of millions of users and millions of applications targeting a wide range of activities where sensitive information is collected and processed. Security of communication and privacy of data are thus of utmost importance in application development. Yet, regularly, there are reports of successful attacks targeting Android users. While some of those attacks exploit vulnerabilities in the Android OS, others directly concern application-level code written by a large pool of developers with varying experience. Recently, a number of studies have investigated this phenomenon, focusing however only on a specific vulnerability type appearing in apps, and based on only a snapshot of the situation at a given time. Thus, the community is still lacking comprehensive studies exploring how vulnerabilities have evolved over time, and how they evolve in a single app across developer updates. Our work fills this gap by leveraging a data stream of 5 million app packages to re-construct versioned lineages of Android apps on which we apply state-of-the-art vulnerability finding tools, to study which types of vulnerabilities are present, how they are introduced in app code, where they are located, and whether they foreshadow malware. Our findings and study artifacts constitute a tangible knowledge to the community. It could be leveraged by developers to focus verification tasks, and by researchers to drive vulnerability discovery and repair research efforts. 
+The Android ecosystem today is a growing universe of a few billions devices, hundreds of millions of users and millions of applications targeting a wide range of activities where sensitive information is collected and processed. Security of communication and privacy of data are thus of utmost importance in application development. Yet, regularly, there are reports of successful attacks targeting Android users. While some of those attacks exploit vulnerabilities in the Android OS, others directly concern application-level code written by a large pool of developers with varying experience. Recently, a number of studies have investigated this phenomenon, focusing however only on a specific vulnerability type appearing in apps, and based on only a snapshot of the situation at a given time. Thus, the community is still lacking comprehensive studies exploring how vulnerabilities have evolved over time, and how they evolve in a single app across developer updates. Our work fills this gap by leveraging a data stream of 5 million app packages to re-construct versioned lineages of Android apps on which we apply state-of-the-art vulnerability finding tools, to study which types of vulnerabilities are present, how they are introduced in app code, where they are located, and whether they foreshadow malware. Our findings and study artifacts constitute a tangible knowledge to the community. It could be leveraged by developers to focus verification tasks, and by researchers to drive vulnerability discovery and repair research efforts.
 
 ## Android App Lineage
 
@@ -54,9 +54,7 @@ com.lskjg.shgu.shiwang.kongj
 
 First line is the App ID (App name) and followings are the sorted versions of this lineage. For each version line, it shows hash, AV positive from [VirusTotal](https://www.virustotal.com/), market, version code and dex date.
 
-### Resource Sharing
-
-The lineage list will be shared after the decision of relevant paper has been made.
+The lineage list can be downloaded [here]({{site.url}}/resources/lineage_dm10)
 
 ## Scanning and Raw Result
 
@@ -87,6 +85,15 @@ Because FlowDroid and IC3 are heavy in terms of resource consumption. Also, some
   * Scanned total # of APKs: 458,814
   * Scan list: download [here]({{site.url}}/resources/bugs_scan_list)
   * Scan Reports: download [here](https://androzoo.uni.lu/static/avedroid_resources/androbugs.zip)
+
+### Code Locations
+
+We focus on two main location categories: library code and developer code. We attempt to provide a fine-grained view on vulnerable-prone code by distinguishing between:
+
+* Developer code, approximated to all app components that share the same package name with the app package (i.e., app id).
+* Official libraries, which we reduce in this work to only Android framework packages (e.g., that start with com.google.android or android.widget). You can download the list [here]({{site.url}}/resources/android_pkgs)
+* Common libraries, which we identify based on whitelists provided in the literature [70]. Downloading [here]({{site.url}}/resources/lib91.txt)
+* Reused or other Third-party code, which we defined as all other components that do not share the app package name, but are neither commonly known library code.
 
 ## Vulnerable Code Snippet
 Based on the scanning result, we localized the vulnerabilities in the code and hereafter we are going to first give some example code snippets and second we are going to share all the vulnerable code with the community. Jimple code are used in the snippets which is the default intermediate representation of [Soot](https://sable.github.io/soot/).
@@ -145,4 +152,4 @@ private static void checkSpace(android.content.Context){
 {% endhighlight %}
 
 ### Code Sharing
-The scanning result will be shared after the decision of relevant paper has been made.
+The scanning result will be shared soon.
