@@ -74,19 +74,19 @@ Because FlowDroid and IC3 are heavy in terms of resource consumption. Also, some
   * Scanned # of completed lineages: 37,736 apks of 3357 lineages
   * Scanned total # of APKs: 223,474
   * Scan list: download [here]({{site.url}}/resources/flow_scan_list)
+  * Scan Reports: download [here](https://androzoo.uni.lu/static/avedroid_resources/flowdroid.zip)
 
 * IC3
   * Scanned # of completed lineages: 30,042 apks of 2048 lineages
   * Scanned total # of APKs: 72,983
   * Scan list: download [here]({{site.url}}/resources/ic3_scan_list)
+  * Scan Reports: download [here](https://androzoo.uni.lu/static/avedroid_resources/ic3.zip)
 
 * AndroBugs
   * Scanned # of completed lineages: 454,799 apks of 27,974 lineages
   * Scanned total # of APKs: 458,814
   * Scan list: download [here]({{site.url}}/resources/bugs_scan_list)
-
-### Raw Scanning Result
-The scanning result will be shared after the decision of relevant paper has been made.
+  * Scan Reports: download [here](https://androzoo.uni.lu/static/avedroid_resources/androbugs.zip)
 
 ## Vulnerable Code Snippet
 Based on the scanning result, we localized the vulnerabilities in the code and hereafter we are going to first give some example code snippets and second we are going to share all the vulnerable code with the community. Jimple code are used in the snippets which is the default intermediate representation of [Soot](https://sable.github.io/soot/).
