@@ -151,5 +151,5 @@ private static void checkSpace(android.content.Context){
 }
 {% endhighlight %}
 
-### Code Sharing
-The scanning result will be shared soon.
+### Code Snippets Sharing
+Scan Snippets: download [here](https://androzoo.uni.lu/static/avedroid_resources/vulrepo.zip)
